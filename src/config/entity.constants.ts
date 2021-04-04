@@ -1,6 +1,7 @@
 import { FinancialYearEntity } from '../accounts/entities/financial.year.entity';
 import { AccountHeadEntity } from '../salary/entities/account.head.entity';
 import { AllowanceBackupEntity } from '../salary/entities/allowance.backup.entity';
+import { AllowanceDependencyEntity } from '../salary/entities/allowance.dependency.entity';
 import { AllowanceHeadEntity } from '../salary/entities/allowance.head.entity';
 import { BlockSalaryEntity } from '../salary/entities/block.salary.entity';
 import { CollegeContributionEntity } from '../salary/entities/college.contribution.entity';
@@ -20,6 +21,7 @@ const entityConstants = {
     '4d9f58914d222f7d5fadb8079ab9d012': FinancialYearEntity,
     '750e45ccde9c056822d419211cd82a6c': AccountHeadEntity,
     '6daff477072f611a29cc858b0f5bbdc5': AllowanceBackupEntity,
+    '447ac16802712086bc3f16ec000740fc': AllowanceDependencyEntity,
     e7d7014400298d077298afab19d35b40: AllowanceHeadEntity,
     '20bdecd459c446627c3f820bab2e145c': BlockSalaryEntity,
     ac5203fa4eec25d031b6038ea3862169: CollegeContributionEntity,

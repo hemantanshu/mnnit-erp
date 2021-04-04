@@ -1,5 +1,6 @@
 import { AccountHeadEntity } from './entities/account.head.entity';
 import { AllowanceBackupEntity } from './entities/allowance.backup.entity';
+import { AllowanceDependencyEntity } from './entities/allowance.dependency.entity';
 import { AllowanceHeadEntity } from './entities/allowance.head.entity';
 import { BlockSalaryEntity } from './entities/block.salary.entity';
 import { CollegeContributionEntity } from './entities/college.contribution.entity';
@@ -18,6 +19,7 @@ const es6Classes = {
     entities: [
         AccountHeadEntity,
         AllowanceBackupEntity,
+        AllowanceDependencyEntity,
         AllowanceHeadEntity,
         BlockSalaryEntity,
         CollegeContributionEntity,
