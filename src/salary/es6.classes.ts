@@ -4,6 +4,8 @@ import { BlockSalaryEntity } from './entities/block.salary.entity';
 import { CollegeContributionEntity } from './entities/college.contribution.entity';
 import { CpfTotalEntity } from './entities/cpf.total.entity';
 import { EmployeeBankAccountEntity } from './entities/employee.bank.account.entity';
+import { GpfTotalEntity } from './entities/gpf.total.entity';
+import { MasterSalaryEntity } from './entities/master.salary.entity';
 
 const es6Classes = {
     controllers: [],
@@ -14,6 +16,8 @@ const es6Classes = {
         CollegeContributionEntity,
         CpfTotalEntity,
         EmployeeBankAccountEntity,
+        GpfTotalEntity,
+        MasterSalaryEntity,
     ],
     services: [],
     subscribers: [],

@@ -18,6 +18,7 @@ import {
 import { ConsoleModule } from 'nestjs-console';
 import { SalaryModule } from './salary/salary.module';
 import { UtilityModule } from './utility/utility.module';
+import { AccountsModule } from './accounts/accounts.module';
 
 @Module({
     imports: [
@@ -30,6 +31,7 @@ import { UtilityModule } from './utility/utility.module';
         PlatformUtilityModule,
         SalaryModule,
         UtilityModule,
+        AccountsModule,
     ],
     controllers: [AppController],
     providers: [AppService],
