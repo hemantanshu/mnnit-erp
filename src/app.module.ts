@@ -16,6 +16,8 @@ import {
     SystemModule,
 } from '@servicelabsco/nestjs-utility-services';
 import { ConsoleModule } from 'nestjs-console';
+import { SalaryModule } from './salary/salary.module';
+import { UtilityModule } from './utility/utility.module';
 
 @Module({
     imports: [
@@ -26,6 +28,8 @@ import { ConsoleModule } from 'nestjs-console';
         SystemModule,
         ConsoleModule,
         PlatformUtilityModule,
+        SalaryModule,
+        UtilityModule,
     ],
     controllers: [AppController],
     providers: [AppService],
