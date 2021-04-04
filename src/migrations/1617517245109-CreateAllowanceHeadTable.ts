@@ -2,7 +2,7 @@ import { MigrationUtility } from '@servicelabsco/nestjs-utility-services';
 
 export class CreateAllowanceHeadTable1617517245109 extends MigrationUtility {
     constructor() {
-        super('sal_allownce_heads');
+        super('sal_allowance_heads');
         this.process();
     }
 
