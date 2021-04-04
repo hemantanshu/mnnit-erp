@@ -6,6 +6,8 @@ import { CpfTotalEntity } from './entities/cpf.total.entity';
 import { EmployeeBankAccountEntity } from './entities/employee.bank.account.entity';
 import { GpfTotalEntity } from './entities/gpf.total.entity';
 import { MasterSalaryEntity } from './entities/master.salary.entity';
+import { NpsTotalEntity } from './entities/nps.total.entity';
+import { RollbackSalaryEntity } from './entities/rollback.salary.entity';
 
 const es6Classes = {
     controllers: [],
@@ -18,6 +20,8 @@ const es6Classes = {
         EmployeeBankAccountEntity,
         GpfTotalEntity,
         MasterSalaryEntity,
+        NpsTotalEntity,
+        RollbackSalaryEntity,
     ],
     services: [],
     subscribers: [],
