@@ -8,5 +8,7 @@ import es6Classes from './es6.classes';
         TypeOrmModule.forFeature(es6Classes.entities),
         PlatformUtilityModule,
     ],
+    providers: [...es6Classes.services, ...es6Classes.commands],
+    exports: [...es6Classes.services],
 })
 export class UtilityModule {}

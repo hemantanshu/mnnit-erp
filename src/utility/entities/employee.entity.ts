@@ -32,6 +32,9 @@ export class EmployeeEntity extends CommonEntity {
     dob: Date;
 
     @Column()
+    h_identifier: string;
+
+    @Column()
     department_id: number;
 
     @Column()
@@ -39,6 +42,15 @@ export class EmployeeEntity extends CommonEntity {
 
     @Column()
     type_id: number;
+
+    @Column()
+    s_identifier: string;
+
+    @Column()
+    d_identifier: string;
+
+    @Column()
+    t_identifier: string;
 
     /** all related methods to go below this */
     @ManyToOne(() => LookupValueEntity)

@@ -22,7 +22,7 @@ const entityConstants = {
     '750e45ccde9c056822d419211cd82a6c': AccountHeadEntity,
     '6daff477072f611a29cc858b0f5bbdc5': AllowanceBackupEntity,
     '447ac16802712086bc3f16ec000740fc': AllowanceDependencyEntity,
-    e7d7014400298d077298afab19d35b40: AllowanceHeadEntity,
+    e116bcfd732d7a9d18a0b52ef82de0e2: AllowanceHeadEntity,
     '20bdecd459c446627c3f820bab2e145c': BlockSalaryEntity,
     ac5203fa4eec25d031b6038ea3862169: CollegeContributionEntity,
     '9dd83342e976e94cfe83699de027a7fc': CpfTotalEntity,

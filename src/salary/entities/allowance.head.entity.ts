@@ -8,7 +8,7 @@ import { AccountHeadEntity } from './account.head.entity';
  * @class AllowanceHeadEntity
  * @extends {CommonEntity}
  */
-@Entity('sal_allownce_heads')
+@Entity('sal_allowance_heads')
 export class AllowanceHeadEntity extends CommonEntity {
     @Column()
     name: string;
