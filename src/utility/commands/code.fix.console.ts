@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { SqlService } from '@servicelabsco/nestjs-utility-services';
 import { Command, Console } from 'nestjs-console';
-import { BankAccountMigration } from '../migrations/bank.account.migration';
+import { BlockSalaryMigration } from '../migrations/block.salary.migration';
 
 @Injectable()
 @Console()
@@ -12,6 +12,7 @@ export class CodeFixConsole {
         description: 'List content of a directory',
     })
     async handle() {
-        await new BankAccountMigration(this.sqlService).process();
+        // await new BankAccountMigration(this.sqlService).process();
+        await new BlockSalaryMigration(this.sqlService).process();
     }
 }
