@@ -9,6 +9,7 @@ import { CpfTotalEntity } from '../salary/entities/cpf.total.entity';
 import { DirectAdditionEntity } from '../salary/entities/direct.addition.entity';
 import { EmployeeBackupEntity } from '../salary/entities/employee.backup.entity';
 import { EmployeeBankAccountEntity } from '../salary/entities/employee.bank.account.entity';
+import { EmployeeFundEntity } from '../salary/entities/employee.fund.entity';
 import { GpfTotalEntity } from '../salary/entities/gpf.total.entity';
 import { MasterSalaryEntity } from '../salary/entities/master.salary.entity';
 import { MonthlySalaryEntity } from '../salary/entities/monthly.salary.entity';
@@ -29,6 +30,7 @@ const entityConstants = {
     '98b54610e04fba4ee48527b7d33f1145': DirectAdditionEntity,
     c1c7ce9509cd8ea56dbfb40db185c7b5: EmployeeBackupEntity,
     c3b1c0b9f3a74dc78f956bae3f094b91: EmployeeBankAccountEntity,
+    f18844ec31bc572a7fe0a29c29b7476b: EmployeeFundEntity,
     '1176de7408d75364169b20b11bc7fa45': GpfTotalEntity,
     '5145d6c3cf29cc9069186a3a6e31ef40': MasterSalaryEntity,
     '31e5c76fb45c7eafe28ce22ee1135abd': MonthlySalaryEntity,

@@ -23,6 +23,12 @@ export class MasterSalaryEntity extends CommonEntity {
     @Column()
     is_overridden: boolean;
 
+    @Column()
+    e_identifier: string;
+
+    @Column()
+    a_identifier: string;
+
     /** all related methods to go below this */
     @ManyToOne(() => EmployeeEntity)
     @JoinColumn({ name: 'employee_id' })

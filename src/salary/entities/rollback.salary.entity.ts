@@ -16,6 +16,9 @@ export class RollbackSalaryEntity extends CommonEntity {
     @Column()
     month: number;
 
+    @Column()
+    identifier: string;
+
     /** all related methods to go below this */
     @ManyToOne(() => EmployeeEntity)
     @JoinColumn({ name: 'employee_id' })

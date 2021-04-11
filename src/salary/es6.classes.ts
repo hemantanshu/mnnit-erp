@@ -8,6 +8,7 @@ import { CpfTotalEntity } from './entities/cpf.total.entity';
 import { DirectAdditionEntity } from './entities/direct.addition.entity';
 import { EmployeeBackupEntity } from './entities/employee.backup.entity';
 import { EmployeeBankAccountEntity } from './entities/employee.bank.account.entity';
+import { EmployeeFundEntity } from './entities/employee.fund.entity';
 import { GpfTotalEntity } from './entities/gpf.total.entity';
 import { MasterSalaryEntity } from './entities/master.salary.entity';
 import { MonthlySalaryEntity } from './entities/monthly.salary.entity';
@@ -27,6 +28,7 @@ const es6Classes = {
         DirectAdditionEntity,
         EmployeeBackupEntity,
         EmployeeBankAccountEntity,
+        EmployeeFundEntity,
         GpfTotalEntity,
         MasterSalaryEntity,
         MonthlySalaryEntity,

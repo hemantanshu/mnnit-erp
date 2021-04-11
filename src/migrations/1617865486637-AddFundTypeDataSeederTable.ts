@@ -7,8 +7,6 @@ export class AddFundTypeDataSeederTable1617865486637 extends SeederUtility {
     }
 
     process() {
-        // add up the lookup type first
-
         this.addLookupType();
         this.addLookupValues();
     }
@@ -27,17 +25,25 @@ export class AddFundTypeDataSeederTable1617865486637 extends SeederUtility {
     addLookupValues() {
         this.addRecord({
             id: 510,
-            name: 'Employee Contribution',
-            value: 'employee-contribution',
-            description: 'employee contribution',
+            name: 'GPF',
+            value: 'gpf',
+            description: 'gpf',
             lookup_type_id: 54,
         });
 
         this.addRecord({
             id: 511,
-            name: 'Institute Contribution',
-            value: 'institute-contribution',
-            description: 'Institute Contribution',
+            name: 'CPF',
+            value: 'cpf',
+            description: 'Cpf',
+            lookup_type_id: 54,
+        });
+
+        this.addRecord({
+            id: 512,
+            name: 'NPS',
+            value: 'nps',
+            description: 'nps`',
             lookup_type_id: 54,
         });
     }

@@ -29,6 +29,9 @@ export class AllowanceBackupEntity extends CommonEntity {
     @Column()
     a_identifier: string;
 
+    @Column()
+    ac_identifier: string;
+
     /** all related methods to go below this */
     @ManyToOne(() => AllowanceHeadEntity)
     @JoinColumn({ name: 'allowance_id' })
