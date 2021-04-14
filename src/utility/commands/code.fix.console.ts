@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { SqlService } from '@servicelabsco/nestjs-utility-services';
 import { Command, Console } from 'nestjs-console';
 import { AllowanceDependencyMigration } from '../migrations/allowance.dependency.migration';
+import { SalaryMigration } from '../migrations/salary.migration';
 
 @Injectable()
 @Console()
@@ -21,6 +22,8 @@ export class CodeFixConsole {
         // await new BackupAccountheadMigration(this.sqlService).process();
         // await new SalaryAdditionMigration(this.sqlService).process();
         // await new BackupEmployeeMigration(this.sqlService).process();
-        await new AllowanceDependencyMigration(this.sqlService).process();
+        // await new AllowanceDependencyMigration(this.sqlService).process();
+
+        await new SalaryMigration(this.sqlService).process();
     }
 }

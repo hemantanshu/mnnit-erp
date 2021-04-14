@@ -11,6 +11,7 @@ import { CpfTotalMigration } from './migrations/cpf.total.migration';
 import { FinancialYearMigration } from './migrations/financial.year.migration';
 import { MasterSalaryMigration } from './migrations/master.salary.migration';
 import { SalaryAdditionMigration } from './migrations/salary.addition.migration';
+import { SalaryMigration } from './migrations/salary.migration';
 import { SqlService } from './services/sql.service';
 
 const es6Classes = {
@@ -28,6 +29,7 @@ const es6Classes = {
         FinancialYearMigration,
         MasterSalaryMigration,
         SalaryAdditionMigration,
+        SalaryMigration,
     ],
     services: [SqlService],
 };

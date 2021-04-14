@@ -1,6 +1,7 @@
 import { CommonEntity } from '@servicelabsco/nestjs-utility-services';
 import { Column, Entity, JoinColumn, ManyToOne } from 'typeorm';
 import { EmployeeEntity } from '../../utility/entities/employee.entity';
+import { AccountHeadEntity } from './account.head.entity';
 import { AllowanceHeadEntity } from './allowance.head.entity';
 
 /**
@@ -18,6 +19,9 @@ export class MonthlySalaryEntity extends CommonEntity {
     allowance_id: number;
 
     @Column()
+    accounthead_id: number;
+
+    @Column()
     month: number;
 
     @Column()
@@ -29,6 +33,9 @@ export class MonthlySalaryEntity extends CommonEntity {
     @Column()
     a_identifier: string;
 
+    @Column()
+    ac_identifier: string;
+
     /** all related methods to go below this */
     @ManyToOne(() => EmployeeEntity)
     @JoinColumn({ name: 'employee_id' })
@@ -37,4 +44,8 @@ export class MonthlySalaryEntity extends CommonEntity {
     @ManyToOne(() => AllowanceHeadEntity)
     @JoinColumn({ name: 'allowance_id' })
     allowance: AllowanceHeadEntity;
+
+    @ManyToOne(() => AccountHeadEntity)
+    @JoinColumn({ name: 'accounthead_id' })
+    accounthead: AccountHeadEntity;
 }
