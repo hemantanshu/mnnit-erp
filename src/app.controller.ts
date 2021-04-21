@@ -15,33 +15,39 @@ export class AppController {
 
     @Get()
     getHello(): string {
+        const data = 'asdfsdf';
         return this.appService.getHello();
     }
 
     @Get('set')
     async test() {
-        const sql = `select a.email, c.name, c.fname, c.mname, c.mobile, a.form_id, a.dob, c.aadhar from phd_2020.general a, phd_2020.step b, phd_2020.per_info c where a.form_id = b.form_id and a.form_id = c.roll order by a.email asc, step asc`;
+        const sql = `select a.email, c.name, c.fname, c.mname, c.mobile, a.form_id, a.dob, c.aadhar, c.sex, c.nation, c.ph from phd_2020.general a, phd_2020.step b, phd_2020.per_info c where a.form_id = b.form_id and a.form_id = c.roll order by a.email asc, step asc`;
 
         const records = await this.sqlService.sql(sql);
 
-        const promises = [];
-
-        records.forEach((record) => {
-            const dept = new BranchEntity();
-            dept.name = record.bra;
-
-            promises.push(dept.save());
-        });
-        return Promise.all(promises).then((res) => {
-            return res;
-        });
+        for (const record of records) {
+            await this.process(record);
+            global.console.log('form', record.form_id);
+        }
     }
 
     async process(record: any) {
         const user = await this.getUser(record);
 
-        const application = new ApplicationEntity();
+        await this.setPersonalInfo(record, user);
+
+        const application = await ApplicationEntity.firstOrNew({
+            application_number: record.form_id,
+        });
+
         application.application_number = record.form_id;
+        application.nationality_id =
+            record.nation.toLowerCase() === 'united kingdom' ? 531 : 530;
+        application.is_specially_abled = record.ph;
+
+        application.user_id = user.id;
+
+        await application.save();
     }
 
     async getUser(record: any) {
@@ -51,7 +57,9 @@ export class AppController {
         user.mobile = record.mobile;
         user.name = record.name;
 
-        user.save();
+        await user.save();
+
+        return user;
     }
 
     async setPersonalInfo(record, user: UserEntity) {
@@ -61,7 +69,11 @@ export class AppController {
 
         personalInfo.father_name = record.fname;
         personalInfo.mother_name = record.mname;
-        personalInfo.dob = record.dob;
-        personalInfo.aadhar_number = record.aadhar;
+        // personalInfo.dob = record.dob;
+        personalInfo.aadhar_number =
+            typeof record.aadhar === 'number' ? record.aadhar : null;
+        personalInfo.gender_id = record.sex === 'm' ? 528 : 529;
+
+        await personalInfo.save();
     }
 }

@@ -14,7 +14,7 @@ export class CreatePersonalInfoTable1619029596679 extends MigrationUtility {
         this.string('father_name');
         this.string('mother_name');
         this.date('dob');
-        this.number('aadhar_number');
+        this.number('aadhar_number', { width: 20 });
 
         this.foreign({ name: 'gender_id', foreignTable: 'sys_lookup_values' });
 

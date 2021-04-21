@@ -11,7 +11,7 @@ export class CreateApplicationTable1619030298572 extends MigrationUtility {
 
         this.foreign({ name: 'user_id', foreignTable: 'sys_users' });
 
-        this.number('application_number');
+        this.number('application_number', { width: 20 });
         this.boolean('is_specially_abled');
 
         this.foreign({
