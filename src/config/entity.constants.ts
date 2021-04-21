@@ -30,6 +30,7 @@ import { ProgramEntity } from '../utility/entities/program.entity';
 import { QualificationSubjectEntity } from '../utility/entities/qualification.subject.entity';
 import { UserEmploymentEntity } from '../utility/entities/user.employment.entity';
 import { UserQualificationEntity } from '../utility/entities/user.qualification.entity';
+import { UserResearchEntity } from '../utility/entities/user.research.entity';
 
 const entityConstants = {
     '4d9f58914d222f7d5fadb8079ab9d012': FinancialYearEntity,
@@ -64,6 +65,7 @@ const entityConstants = {
     '943225550c7768e1890c5806acb7b7dd': QualificationSubjectEntity,
     '6711bc77730ead51637a59d13575584f': UserEmploymentEntity,
     '4d0442ec84322442c1dcad87e39dea2c': UserQualificationEntity,
+    '656742dcd742516415a38ea6dc9fd10b': UserResearchEntity,
 };
 
 export = entityConstants;

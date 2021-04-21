@@ -10,6 +10,7 @@ import { ProgramEntity } from './entities/program.entity';
 import { QualificationSubjectEntity } from './entities/qualification.subject.entity';
 import { UserEmploymentEntity } from './entities/user.employment.entity';
 import { UserQualificationEntity } from './entities/user.qualification.entity';
+import { UserResearchEntity } from './entities/user.research.entity';
 import { AllowanceDependencyMigration } from './migrations/allowance.dependency.migration';
 import { BackupAccountheadMigration } from './migrations/backup.accounthead.migration';
 import { BackupEmployeeMigration } from './migrations/backup.employee.migration';
@@ -38,6 +39,7 @@ const es6Classes = {
         QualificationSubjectEntity,
         UserEmploymentEntity,
         UserQualificationEntity,
+        UserResearchEntity,
     ],
     migrations: [
         AllowanceDependencyMigration,
