@@ -16,6 +16,7 @@ import { SqlService } from './services/sql.service';
 
 const es6Classes = {
     commands: [CodeFixConsole],
+    controllers: [],
     entities: [DepartmentEntity, EmployeeEntity],
     migrations: [
         AllowanceDependencyMigration,
