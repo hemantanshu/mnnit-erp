@@ -1,37 +1,31 @@
 import { Column, Entity, JoinTable, ManyToMany, OneToMany } from 'typeorm';
 import { CommonEntity } from '@servicelabsco/nestjs-utility-services';
 import { ProgramDepartmentEntity } from './program.department.entity';
-import { ProgramEntity } from './program.entity';
+import { DepartmentEntity } from './department.entity';
 
 /**
- * entity definition against the utl_departments table
+ * entity definition against the utl_programs table
  * @export
- * @class DepartmentEntity
+ * @class ProgramEntity
  * @extends {CommonEntity}
  */
-@Entity('utl_departments')
-export class DepartmentEntity extends CommonEntity {
+@Entity('utl_programs')
+export class ProgramEntity extends CommonEntity {
     @Column()
     name: string;
-
-    @Column()
-    description: string;
-
-    @Column()
-    identifier: string;
 
     /** all related methods to go below this */
     @OneToMany(
         () => ProgramDepartmentEntity,
-        (program_departments) => program_departments.department
+        (program_departments) => program_departments.program
     )
     program_departments: ProgramDepartmentEntity[];
 
-    @ManyToMany(() => ProgramEntity)
+    @ManyToMany(() => DepartmentEntity)
     @JoinTable({
         name: 'utl_program_departments',
-        joinColumn: { name: 'department_id' },
-        inverseJoinColumn: { name: 'program_id' },
+        joinColumn: { name: 'program_id' },
+        inverseJoinColumn: { name: 'department_id' },
     })
-    programs: ProgramEntity[];
+    departments: DepartmentEntity[];
 }

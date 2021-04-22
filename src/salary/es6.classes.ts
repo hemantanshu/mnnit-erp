@@ -16,7 +16,6 @@ import { NpsTotalEntity } from './entities/nps.total.entity';
 import { RollbackSalaryEntity } from './entities/rollback.salary.entity';
 
 const es6Classes = {
-    controllers: [],
     entities: [
         AccountHeadEntity,
         AllowanceBackupEntity,
@@ -35,8 +34,6 @@ const es6Classes = {
         NpsTotalEntity,
         RollbackSalaryEntity,
     ],
-    services: [],
-    subscribers: [],
 };
 
 export default es6Classes;
