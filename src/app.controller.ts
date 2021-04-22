@@ -1,8 +1,10 @@
+import { UserQualificationEntity } from './utility/entities/user.qualification.entity';
 import { Controller, Get } from '@nestjs/common';
 import { SqlService, UserEntity } from '@servicelabsco/nestjs-utility-services';
 import { ApplicationEntity } from './admissions/entities/application.entity';
 import { AppService } from './app.service';
 import { PersonalInfoEntity } from './utility/entities/personal.info.entity';
+import { QualificationSubjectEntity } from './utility/entities/qualification.subject.entity';
 
 @Controller()
 export class AppController {
@@ -19,45 +21,84 @@ export class AppController {
 
     @Get('set')
     async test() {
-        const sql = `select a.email, c.name, c.fname, c.mname, c.mobile, a.form_id, a.dob, c.aadhar, c.sex, c.nation, c.ph from phd_2020.general a, phd_2020.step b, phd_2020.per_info c where a.form_id = b.form_id and a.form_id = c.roll order by a.email asc, step asc`;
+        const sql = `select * from phd_2020.qualification where roll not like '%r'`;
 
         const records = await this.sqlService.sql(sql);
 
         for (const record of records) {
-            await this.process(record);
-            global.console.log('form', record.roll);
+            try {
+                await this.process(record);
+                global.console.log('form', record.roll);
+            } catch (error) {
+                global.console.log('record', record);
+            }
         }
     }
 
     async process(record: any) {
-        const user = await this.getUser(record);
+        const application = await this.getApplication(record);
 
-        await this.setPersonalInfo(record, user);
+        if (!application) return global.console.log('record-error', record);
 
-        const application = await ApplicationEntity.firstOrNew({
-            application_number: record.form_id,
+        const promises = [];
+
+        promises.push(
+            this.createQualification(application.user_id, 532, 'x10', record)
+        );
+        promises.push(
+            this.createQualification(application.user_id, 533, 'x12', record)
+        );
+        promises.push(
+            this.createQualification(application.user_id, 534, 'x13', record)
+        );
+
+        promises.push(
+            this.createQualification(application.user_id, 535, 'x14', record)
+        );
+
+        return Promise.all(promises).then((res) => {
+            return res;
         });
-
-        application.application_number = record.form_id;
-        application.nationality_id =
-            record.nation.toLowerCase() === 'united kingdom' ? 531 : 530;
-        application.is_specially_abled = record.ph;
-
-        application.user_id = user.id;
-
-        await application.save();
     }
 
-    async getUser(record: any) {
-        const user = await UserEntity.firstOrNew({ email: record.email });
+    async createQualification(userId, typeId, identifier, record) {
+        const board = record[`${identifier}board`];
+        const qualification = await UserQualificationEntity.firstOrNew({
+            user_id: userId,
+            type_id: typeId,
+            board,
+        });
 
-        user.dialing_code = 91;
-        user.mobile = typeof record.mobile === 'number' ? record.mobile : null;
-        user.name = record.name;
+        qualification.year = this.getNumber(record[`${identifier}year`]);
+        qualification.percentage_score = this.getNumber(
+            record[`${identifier}mark`]
+        );
 
-        await user.save();
+        await qualification.save();
 
-        return user;
+        await this.createSubjects(
+            qualification,
+            record[`${identifier}subject`]
+        );
+    }
+
+    async createSubjects(qualification, subjects) {
+        const data = subjects.split(',');
+
+        for (const subject of data) {
+            const record = await QualificationSubjectEntity.firstOrNew({
+                qualification_id: qualification.id,
+                subject,
+            });
+
+            await record.save();
+        }
+    }
+
+    async getApplication(record: any) {
+        return await ApplicationEntity.findOne({
+            where: { application_number: record.roll },
+        });
     }
 
     async setPersonalInfo(record, user: UserEntity) {
@@ -73,5 +114,9 @@ export class AppController {
         personalInfo.gender_id = record.sex === 'm' ? 528 : 529;
 
         await personalInfo.save();
+    }
+
+    getNumber(val: any) {
+        return typeof val === 'number' ? val : null;
     }
 }
