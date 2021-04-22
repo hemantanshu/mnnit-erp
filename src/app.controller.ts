@@ -19,7 +19,7 @@ export class AppController {
 
     @Get('set')
     async test() {
-        const sql = `select * from phd_2020.qualification`;
+        const sql = `select a.email, c.name, c.fname, c.mname, c.mobile, a.form_id, a.dob, c.aadhar, c.sex, c.nation, c.ph from phd_2020.general a, phd_2020.step b, phd_2020.per_info c where a.form_id = b.form_id and a.form_id = c.roll order by a.email asc, step asc`;
 
         const records = await this.sqlService.sql(sql);
 
