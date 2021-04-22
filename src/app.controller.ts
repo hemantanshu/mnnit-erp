@@ -5,6 +5,7 @@ import { ApplicationEntity } from './admissions/entities/application.entity';
 import { AppService } from './app.service';
 import { PersonalInfoEntity } from './utility/entities/personal.info.entity';
 import { QualificationSubjectEntity } from './utility/entities/qualification.subject.entity';
+import { UserEmploymentEntity } from './utility/entities/user.employment.entity';
 
 @Controller()
 export class AppController {
@@ -21,8 +22,7 @@ export class AppController {
 
     @Get('set')
     async test() {
-        const sql = `select * from phd_2020.qualification where roll not like '%r'`;
-
+        const sql = `select * from phd_2020.experience where roll not like '%r'`;
         const records = await this.sqlService.sql(sql);
 
         for (const record of records) {
@@ -40,59 +40,31 @@ export class AppController {
 
         if (!application) return global.console.log('record-error', record);
 
-        const promises = [];
-
-        promises.push(
-            this.createQualification(application.user_id, 532, 'x10', record)
-        );
-        promises.push(
-            this.createQualification(application.user_id, 533, 'x12', record)
-        );
-        promises.push(
-            this.createQualification(application.user_id, 534, 'x13', record)
-        );
-
-        promises.push(
-            this.createQualification(application.user_id, 535, 'x14', record)
-        );
-
-        return Promise.all(promises).then((res) => {
-            return res;
-        });
-    }
-
-    async createQualification(userId, typeId, identifier, record) {
-        const board = record[`${identifier}board`];
-        const qualification = await UserQualificationEntity.firstOrNew({
-            user_id: userId,
-            type_id: typeId,
-            board,
-        });
-
-        qualification.year = this.getNumber(record[`${identifier}year`]);
-        qualification.percentage_score = this.getNumber(
-            record[`${identifier}mark`]
-        );
-
-        await qualification.save();
-
-        await this.createSubjects(
-            qualification,
-            record[`${identifier}subject`]
-        );
-    }
-
-    async createSubjects(qualification, subjects) {
-        const data = subjects.split(',');
-
-        for (const subject of data) {
-            const record = await QualificationSubjectEntity.firstOrNew({
-                qualification_id: qualification.id,
-                subject,
-            });
-
-            await record.save();
+        for (let i = 1; i < 5; ++i) {
+            if (record[`exp${i}`]) {
+                await this.createExperience(application.user_id, record, i);
+            }
         }
+    }
+
+    async createExperience(userId, record, type) {
+        const employer = record[`exp${type}`];
+
+        const from = record[`frm_${type}`].split('/');
+        const to = record[`to_${type}`]
+            ? record[`to_${type}`].split('/')
+            : null;
+
+        const experience = await UserEmploymentEntity.firstOrNew({
+            user_id: userId,
+            employer,
+        });
+
+        experience.reporting_manager = record[`emp${type}`];
+        experience.start_date = this.getDate(from);
+        experience.end_date = this.getDate(to);
+
+        await experience.save();
     }
 
     async getApplication(record: any) {
@@ -101,22 +73,17 @@ export class AppController {
         });
     }
 
-    async setPersonalInfo(record, user: UserEntity) {
-        const personalInfo = await PersonalInfoEntity.firstOrNew({
-            user_id: user.id,
-        });
-
-        personalInfo.father_name = record.fname;
-        personalInfo.mother_name = record.mname;
-        // personalInfo.dob = record.dob;
-        personalInfo.aadhar_number =
-            typeof record.aadhar === 'number' ? record.aadhar : null;
-        personalInfo.gender_id = record.sex === 'm' ? 528 : 529;
-
-        await personalInfo.save();
-    }
-
     getNumber(val: any) {
         return typeof val === 'number' ? val : null;
+    }
+
+    getDate(date: any[]): any {
+        if (!date) return null;
+
+        if (date.length === 2) return `${date[1]}-${date[0]}-01`;
+
+        if (date.length === 3) return `${date[2]}-${date[1]}-${date[0]}`;
+
+        return null;
     }
 }

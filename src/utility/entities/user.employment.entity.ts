@@ -19,6 +19,9 @@ export class UserEmploymentEntity extends CommonEntity {
     employer: string;
 
     @Column()
+    reporting_manager: string;
+
+    @Column()
     start_date: Date;
 
     @Column()
