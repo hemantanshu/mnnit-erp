@@ -1,25 +1,26 @@
 import { Injectable } from '@nestjs/common';
 import { SqlService } from '@servicelabsco/nestjs-utility-services';
 import { Command, Console } from 'nestjs-console';
-import { AllowanceDependencyMigration } from '../migrations/allowance.dependency.migration';
-import { SalaryMigration } from '../migrations/salary.migration';
+import { ApplicationChoiceEntity } from '../../admissions/entities/application.choice.entity';
 import { ApplicationEntity } from '../../admissions/entities/application.entity';
-import { UserEmploymentEntity } from '../entities/user.employment.entity';
+import { UserResearchEntity } from '../entities/user.research.entity';
 
 @Injectable()
 @Console()
 export class CodeFixConsole {
+    private mapping: any = {};
     constructor(private readonly sqlService: SqlService) {}
     @Command({
         command: 'code:fix',
         description: 'List content of a directory',
     })
     async handle() {
+        this.setMapping();
         await this.test();
     }
 
     async test() {
-        const sql = `select * from phd_2020.experience where roll not like '%r'`;
+        const sql = `select * from phd_2020.research where roll not like '%r'`;
         const records = await this.sqlService.sql(sql);
 
         for (const record of records) {
@@ -28,6 +29,7 @@ export class CodeFixConsole {
                 global.console.log('form', record.roll);
             } catch (error) {
                 global.console.log('record', record);
+                global.console.log('errror', error);
             }
         }
     }
@@ -37,37 +39,41 @@ export class CodeFixConsole {
 
         if (!application) return global.console.log('record-error', record);
 
-        for (let i = 1; i < 5; ++i) {
-            if (record[`exp${i}`]) {
-                await this.createExperience(application.user_id, record, i);
-            }
+        const areas = record.aor.split(',');
+        for (const area of areas) {
+            await this.createResearches(application.user_id, area);
+        }
+
+        const choices = record.choice.split(' ');
+        for (const choice of choices) {
+            const id = this.mapping[choice];
+            if (!id) continue;
+
+            await this.createChoice(application.id, id);
         }
     }
 
-    async createExperience(userId, record, type) {
-        const employer = record[`exp${type}`];
-
-        const from = record[`frm_${type}`].split('/');
-        const to = record[`to_${type}`]
-            ? record[`to_${type}`].split('/')
-            : null;
-
-        const experience = await UserEmploymentEntity.firstOrNew({
+    async createResearches(userId, area) {
+        const research = await UserResearchEntity.firstOrNew({
             user_id: userId,
-            employer,
+            name: area,
         });
 
-        experience.reporting_manager = record[`emp${type}`];
-        experience.start_date = this.getDate(from);
-        experience.end_date = this.getDate(to);
-
-        await experience.save();
+        await research.save();
     }
 
     async getApplication(record: any) {
         return await ApplicationEntity.findOne({
             where: { application_number: record.roll },
         });
+    }
+
+    async createChoice(applicationId, choice) {
+        const record = await ApplicationChoiceEntity.firstOrNew({
+            application_id: applicationId,
+            choice_id: choice,
+        });
+        await record.save();
     }
 
     getNumber(val: any) {
@@ -82,5 +88,13 @@ export class CodeFixConsole {
         if (date.length === 3) return `${date[2]}-${date[1]}-${date[0]}`;
 
         return null;
+    }
+
+    setMapping() {
+        this.mapping[11] = 537;
+        this.mapping[12] = 538;
+        this.mapping[13] = 539;
+        this.mapping[14] = 540;
+        this.mapping[15] = 541;
     }
 }
