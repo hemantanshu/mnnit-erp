@@ -80,7 +80,7 @@ export class ApplicationEntity extends CommonEntity {
         () => ApplicationChoiceEntity,
         (application_chioces) => application_chioces.application
     )
-    application_chioces: ApplicationChoiceEntity[];
+    application_choices: ApplicationChoiceEntity[];
 
     @OneToMany(
         () => ApplicationPaymentEntity,

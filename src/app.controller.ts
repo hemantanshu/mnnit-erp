@@ -1,5 +1,5 @@
 import { Controller, Get } from '@nestjs/common';
-import { Auth, SqlService } from '@servicelabsco/nestjs-utility-services';
+import { Auth, Hash, SqlService } from '@servicelabsco/nestjs-utility-services';
 import { AppService } from './app.service';
 
 @Controller()
@@ -11,7 +11,7 @@ export class AppController {
 
     @Get()
     getHello(): string {
-        const data = 'asdfsdf';
+        return Hash.hash('Google@2s');
         return this.appService.getHello();
     }
 

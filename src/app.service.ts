@@ -25,6 +25,11 @@ export class AppService {
             ...existingEntities,
             ...entityConstants,
         });
+
+        global.console.log(
+            'this.localPropertyService.entities',
+            this.localPropertyService.get('entities')
+        );
     }
     getHello(): string {
         return 'Hello World!';
