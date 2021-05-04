@@ -1,4 +1,6 @@
 import { CodeFixConsole } from './commands/code.fix.console';
+import { UserController } from './controllers/user.controller';
+import { UserPasswordDto } from './dtos/user.password.dto';
 import { AddressEntity } from './entities/address.entity';
 import { BranchEntity } from './entities/branch.entity';
 import { DepartmentEntity } from './entities/department.entity';
@@ -22,11 +24,14 @@ import { FinancialYearMigration } from './migrations/financial.year.migration';
 import { MasterSalaryMigration } from './migrations/master.salary.migration';
 import { SalaryAdditionMigration } from './migrations/salary.addition.migration';
 import { SalaryMigration } from './migrations/salary.migration';
+import { Es6Service } from './services/es6.service';
 import { SqlService } from './services/sql.service';
+import { UserService } from './services/user.service';
 
 const es6Classes = {
     commands: [CodeFixConsole],
-    controllers: [],
+    controllers: [UserController],
+    dtos: [UserPasswordDto],
     entities: [
         AddressEntity,
         BranchEntity,
@@ -54,7 +59,7 @@ const es6Classes = {
         SalaryAdditionMigration,
         SalaryMigration,
     ],
-    services: [SqlService],
+    services: [Es6Service, SqlService, UserService],
 };
 
 export default es6Classes;

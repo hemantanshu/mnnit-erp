@@ -1,8 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import {
-    LocalPropertyService,
-    QueueService,
-} from '@servicelabsco/nestjs-utility-services';
+import { LocalPropertyService } from '@servicelabsco/nestjs-utility-services';
 import entityConstants = require('./config/entity.constants');
 @Injectable()
 export class AppService {
@@ -25,11 +22,6 @@ export class AppService {
             ...existingEntities,
             ...entityConstants,
         });
-
-        global.console.log(
-            'this.localPropertyService.entities',
-            this.localPropertyService.get('entities')
-        );
     }
     getHello(): string {
         return 'Hello World!';
