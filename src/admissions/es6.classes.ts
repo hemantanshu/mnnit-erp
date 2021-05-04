@@ -3,7 +3,6 @@ import { ApplicationEntity } from './entities/application.entity';
 import { ApplicationPaymentEntity } from './entities/application.payment.entity';
 
 const es6Classes = {
-    controllers: [],
     entities: [
         ApplicationChoiceEntity,
         ApplicationEntity,

@@ -1,5 +1,5 @@
 {
-  "name": "@servicelabsco/nestjs-starter-code",
+  "name": "@servicelabsco/mnnit-erp-backend",
   "version": "0.0.1",
   "description": "starter code for the nestjs with pg db support",
   "author": "Hemant Kumar Sah <hemantanshu@gmail.com>",
@@ -54,7 +54,7 @@
     "@nestjs/terminus": "^7.1.2",
     "@nestjs/typeorm": "^7.1.5",
     "@nestjs/websockets": "^7.6.6",
-    "@servicelabsco/nestjs-utility-services": "^1.0.130",
+    "@servicelabsco/nestjs-utility-services": "^1.0.131",
     "@types/randomstring": "^1.1.6",
     "body-parser": "^1.19.0",
     "bull": "^3.22.4",
