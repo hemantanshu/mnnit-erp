@@ -48,8 +48,7 @@ export class SentryConfig {
                 filters: [
                     {
                         type: HttpException,
-                        filter: (exception: HttpException) =>
-                            500 > exception.getStatus(),
+                        filter: (exception: HttpException) => 500 > exception.getStatus(),
                     },
                 ],
             })

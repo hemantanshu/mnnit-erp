@@ -1,8 +1,4 @@
-import {
-    Hash,
-    OperationException,
-    UserEntity,
-} from '@servicelabsco/nestjs-utility-services';
+import { Hash, OperationException, UserEntity } from '@servicelabsco/nestjs-utility-services';
 import { UserPasswordDto } from './../dtos/user.password.dto';
 import { Injectable } from '@nestjs/common';
 

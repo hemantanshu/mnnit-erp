@@ -18,8 +18,7 @@ export class AddBankTypesDataSeederTable1617621505406 extends SeederUtility {
             {
                 id: 51,
                 name: 'Payroll Bank Account Providers',
-                description:
-                    'Different types of banks providers in our payroll',
+                description: 'Different types of banks providers in our payroll',
             },
             'sys_lookup_types'
         );
@@ -28,8 +27,7 @@ export class AddBankTypesDataSeederTable1617621505406 extends SeederUtility {
             {
                 id: 52,
                 name: 'Bank Account Type',
-                description:
-                    'Different types of banks supported in our payroll',
+                description: 'Different types of banks supported in our payroll',
             },
             'sys_lookup_types'
         );

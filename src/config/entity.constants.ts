@@ -28,6 +28,7 @@ import { ProgramDepartmentBranchEntity } from '../utility/entities/program.depar
 import { ProgramDepartmentEntity } from '../utility/entities/program.department.entity';
 import { ProgramEntity } from '../utility/entities/program.entity';
 import { QualificationSubjectEntity } from '../utility/entities/qualification.subject.entity';
+import { UserDepartmentEntity } from '../utility/entities/user.department.entity';
 import { UserEmploymentEntity } from '../utility/entities/user.employment.entity';
 import { UserQualificationEntity } from '../utility/entities/user.qualification.entity';
 import { UserResearchEntity } from '../utility/entities/user.research.entity';
@@ -63,6 +64,7 @@ const entityConstants = {
     ede1c19e6ce53115717d632deeecc794: ProgramDepartmentEntity,
     '984714f118e6d55bb43a668d76f73543': ProgramEntity,
     '943225550c7768e1890c5806acb7b7dd': QualificationSubjectEntity,
+    c5a587c0c342aacfd49be1519f648c02: UserDepartmentEntity,
     '6711bc77730ead51637a59d13575584f': UserEmploymentEntity,
     '4d0442ec84322442c1dcad87e39dea2c': UserQualificationEntity,
     '656742dcd742516415a38ea6dc9fd10b': UserResearchEntity,

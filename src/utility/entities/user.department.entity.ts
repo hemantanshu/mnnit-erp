@@ -1,28 +1,27 @@
 import { Column, Entity, JoinColumn, ManyToOne } from 'typeorm';
 import { CommonEntity, UserEntity } from '@servicelabsco/nestjs-utility-services';
+import { DepartmentEntity } from './department.entity';
 
 /**
- * entity definition against the utl_user_researches table
+ * entity definition against the utl_user_departments table
  * @export
- * @class UserResearchEntity
+ * @class UserDepartmentEntity
  * @extends {CommonEntity}
  */
-@Entity('utl_user_researches')
-export class UserResearchEntity extends CommonEntity {
+@Entity('utl_user_departments')
+export class UserDepartmentEntity extends CommonEntity {
     @Column()
     user_id: number;
 
     @Column()
-    name: string;
-
-    @Column()
-    url: string;
-
-    @Column()
-    description: string;
+    department_id: number;
 
     /** all related methods to go below this */
     @ManyToOne(() => UserEntity)
     @JoinColumn({ name: 'user_id' })
     user: UserEntity;
+
+    @ManyToOne(() => DepartmentEntity)
+    @JoinColumn({ name: 'department_id' })
+    department: DepartmentEntity;
 }

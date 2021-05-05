@@ -21,15 +21,7 @@ const dbConfig: ConnectionOptions = {
     username: process.env.DB_USER || db.user,
     password: process.env.DB_PASSWORD || db.password,
     database: process.env.DB_DATABASE || db.database,
-    entities: [
-        join(__dirname, '/../**/**/*.entity.{ts,js}'),
-        join(
-            __dirname,
-            '..',
-            '..',
-            'node_modules/@servicelabsco/**/*.entity.{ts,js}'
-        ),
-    ],
+    entities: [join(__dirname, '/../**/**/*.entity.{ts,js}'), join(__dirname, '..', '..', 'node_modules/@servicelabsco/**/*.entity.{ts,js}')],
 
     // We are using migrations, synchronize should be set to false.
     synchronize: false,
@@ -47,15 +39,7 @@ const dbConfig: ConnectionOptions = {
     // __dirname is either dist or src folder, meaning either
     // the compiled js in prod or the ts in dev
     migrationsTableName: 'sys_migrations',
-    migrations: [
-        __dirname + '/../migrations/**/*{.ts,.js}',
-        join(
-            __dirname,
-            '..',
-            '..',
-            'node_modules/@servicelabsco/**/migrations/**/*{.ts,.js}'
-        ),
-    ],
+    migrations: [__dirname + '/../migrations/**/*{.ts,.js}', join(__dirname, '..', '..', 'node_modules/@servicelabsco/**/migrations/**/*{.ts,.js}')],
     cli: {
         migrationsDir: 'src/migrations',
     },

@@ -7,9 +7,6 @@ export class AddAccountIndexSalMonthlySalaryTable1618256617426 extends Migration
     }
 
     process() {
-        this.index(
-            ['e_identifier', 'month', 'a_identifier', 'ac_identifier'],
-            'sal_monthly_salary_identifier_index'
-        );
+        this.index(['e_identifier', 'month', 'a_identifier', 'ac_identifier'], 'sal_monthly_salary_identifier_index');
     }
 }

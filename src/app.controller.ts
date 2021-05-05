@@ -4,10 +4,7 @@ import { AppService } from './app.service';
 
 @Controller()
 export class AppController {
-    constructor(
-        private readonly appService: AppService,
-        private readonly sqlService: SqlService
-    ) {}
+    constructor(private readonly appService: AppService, private readonly sqlService: SqlService) {}
 
     @Get()
     getHello(): string {

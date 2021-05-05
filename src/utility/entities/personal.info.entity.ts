@@ -1,9 +1,5 @@
 import { Column, Entity, JoinColumn, ManyToOne } from 'typeorm';
-import {
-    CommonEntity,
-    LookupValueEntity,
-    UserEntity,
-} from '@servicelabsco/nestjs-utility-services';
+import { CommonEntity, LookupValueEntity, UserEntity } from '@servicelabsco/nestjs-utility-services';
 
 /**
  * entity definition against the utl_personal_info table

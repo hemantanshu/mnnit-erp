@@ -10,6 +10,7 @@ import { ProgramDepartmentBranchEntity } from './entities/program.department.bra
 import { ProgramDepartmentEntity } from './entities/program.department.entity';
 import { ProgramEntity } from './entities/program.entity';
 import { QualificationSubjectEntity } from './entities/qualification.subject.entity';
+import { UserDepartmentEntity } from './entities/user.department.entity';
 import { UserEmploymentEntity } from './entities/user.employment.entity';
 import { UserQualificationEntity } from './entities/user.qualification.entity';
 import { UserResearchEntity } from './entities/user.research.entity';
@@ -42,6 +43,7 @@ const es6Classes = {
         ProgramDepartmentEntity,
         ProgramEntity,
         QualificationSubjectEntity,
+        UserDepartmentEntity,
         UserEmploymentEntity,
         UserQualificationEntity,
         UserResearchEntity,

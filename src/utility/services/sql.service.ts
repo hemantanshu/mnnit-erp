@@ -39,16 +39,8 @@ export class SqlService {
      * @return {*}
      * @memberof SqlService
      */
-    async getAggregateSingle(
-        repository: any,
-        select: string,
-        condition: string
-    ) {
-        const response = await repository
-            .createQueryBuilder('ac')
-            .select(`${select}`, 'aggregate')
-            .where(condition)
-            .getRawOne();
+    async getAggregateSingle(repository: any, select: string, condition: string) {
+        const response = await repository.createQueryBuilder('ac').select(`${select}`, 'aggregate').where(condition).getRawOne();
 
         return response;
     }

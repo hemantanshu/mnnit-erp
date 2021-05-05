@@ -11,13 +11,7 @@ export class AddQualicationValuesDataSeederTable1619114191381 extends SeederUtil
     }
 
     addLookupValues() {
-        const records = [
-            '10th',
-            '12th',
-            'Graduation',
-            'Post Graduation',
-            'Phd',
-        ];
+        const records = ['10th', '12th', 'Graduation', 'Post Graduation', 'Phd'];
         let id = 531;
         records.forEach((record) => {
             ++id;

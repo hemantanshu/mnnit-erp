@@ -1,8 +1,5 @@
 import { Column, Entity, JoinColumn, ManyToOne } from 'typeorm';
-import {
-    CommonEntity,
-    UserEntity,
-} from '@servicelabsco/nestjs-utility-services';
+import { CommonEntity, UserEntity } from '@servicelabsco/nestjs-utility-services';
 
 /**
  * entity definition against the utl_user_employments table

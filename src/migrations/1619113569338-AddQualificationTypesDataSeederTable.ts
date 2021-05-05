@@ -15,8 +15,7 @@ export class AddQualificationTypesDataSeederTable1619113569338 extends SeederUti
             {
                 id: 59,
                 name: 'Qualification Types',
-                description:
-                    'different types of qualifications supported in the system',
+                description: 'different types of qualifications supported in the system',
             },
             'sys_lookup_types'
         );

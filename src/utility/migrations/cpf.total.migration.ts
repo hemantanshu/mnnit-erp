@@ -1,7 +1,4 @@
-import {
-    LookupValueEntity,
-    SqlService,
-} from '@servicelabsco/nestjs-utility-services';
+import { LookupValueEntity, SqlService } from '@servicelabsco/nestjs-utility-services';
 import { plainToClassFromExist } from 'class-transformer';
 import { EmployeeFundEntity } from '../../salary/entities/employee.fund.entity';
 

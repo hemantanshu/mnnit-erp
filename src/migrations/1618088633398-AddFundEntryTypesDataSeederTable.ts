@@ -16,8 +16,7 @@ export class AddFundEntryTypesDataSeederTable1618088633398 extends SeederUtility
             {
                 id: 55,
                 name: 'Employee Fund Entry Types',
-                description:
-                    'Different types of fund insertion in the contributory one',
+                description: 'Different types of fund insertion in the contributory one',
             },
             'sys_lookup_types'
         );

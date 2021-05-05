@@ -4,9 +4,6 @@ import { PlatformUtilityModule } from '@servicelabsco/nestjs-utility-services';
 import es6Classes from './es6.classes';
 
 @Module({
-    imports: [
-        TypeOrmModule.forFeature(es6Classes.entities),
-        PlatformUtilityModule,
-    ],
+    imports: [TypeOrmModule.forFeature(es6Classes.entities), PlatformUtilityModule],
 })
 export class SalaryModule {}

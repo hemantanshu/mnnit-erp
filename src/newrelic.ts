@@ -53,11 +53,7 @@ exports.config = {
      * set the attributes related to error_collector
      */
     error_collector: {
-        ignore_status_codes: [
-            HttpStatus.UNAUTHORIZED,
-            HttpStatus.FORBIDDEN,
-            HttpStatus.NOT_FOUND,
-        ],
+        ignore_status_codes: [HttpStatus.UNAUTHORIZED, HttpStatus.FORBIDDEN, HttpStatus.NOT_FOUND],
     },
     attributes: {
         /**

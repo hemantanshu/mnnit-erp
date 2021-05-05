@@ -40,14 +40,8 @@ import { AdmissionsModule } from './admissions/admissions.module';
 })
 export class AppModule {
     configure(consumer: MiddlewareConsumer) {
-        consumer
-            .apply(JwtMiddleware)
-            .forRoutes({ path: '*', method: RequestMethod.ALL });
-        consumer
-            .apply(BasicAuthMiddleware)
-            .forRoutes({ path: '*', method: RequestMethod.ALL });
-        consumer
-            .apply(RestrictedMiddleware)
-            .forRoutes({ path: 'api/*', method: RequestMethod.ALL });
+        consumer.apply(JwtMiddleware).forRoutes({ path: '*', method: RequestMethod.ALL });
+        consumer.apply(BasicAuthMiddleware).forRoutes({ path: '*', method: RequestMethod.ALL });
+        consumer.apply(RestrictedMiddleware).forRoutes({ path: 'api/*', method: RequestMethod.ALL });
     }
 }

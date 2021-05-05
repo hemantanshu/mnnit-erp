@@ -1,9 +1,6 @@
 import { UserService } from './../services/user.service';
 import { Body, Controller, Post } from '@nestjs/common';
-import {
-    AccessException,
-    AccessManager,
-} from '@servicelabsco/nestjs-utility-services';
+import { AccessException, AccessManager } from '@servicelabsco/nestjs-utility-services';
 import { UserPasswordDto } from './../dtos/user.password.dto';
 
 /**
@@ -13,10 +10,7 @@ import { UserPasswordDto } from './../dtos/user.password.dto';
  */
 @Controller('api/admin/user')
 export class UserController {
-    constructor(
-        private readonly accessManger: AccessManager,
-        private readonly userService: UserService
-    ) {}
+    constructor(private readonly accessManger: AccessManager, private readonly userService: UserService) {}
 
     /**
      * end point to manage any user password
@@ -26,14 +20,8 @@ export class UserController {
      */
     @Post('change-password')
     async changeUserPassword(@Body() body: UserPasswordDto) {
-        if (
-            !this.accessManger.hasAbsolutePermissionIdentifier(
-                'change-user-password'
-            )
-        )
-            throw new AccessException(
-                'You dont have permission change-user-password'
-            );
+        if (!this.accessManger.hasAbsolutePermissionIdentifier('change-user-password'))
+            throw new AccessException('You dont have permission change-user-password');
 
         return await this.userService.changeUserPassword(body);
     }

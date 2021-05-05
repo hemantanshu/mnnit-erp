@@ -1,17 +1,5 @@
-import {
-    Column,
-    Entity,
-    JoinColumn,
-    JoinTable,
-    ManyToMany,
-    ManyToOne,
-    OneToMany,
-} from 'typeorm';
-import {
-    CommonEntity,
-    LookupValueEntity,
-    UserEntity,
-} from '@servicelabsco/nestjs-utility-services';
+import { Column, Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, OneToMany } from 'typeorm';
+import { CommonEntity, LookupValueEntity, UserEntity } from '@servicelabsco/nestjs-utility-services';
 import { DepartmentEntity } from '../../utility/entities/department.entity';
 import { ProgramEntity } from '../../utility/entities/program.entity';
 import { BranchEntity } from '../../utility/entities/branch.entity';
@@ -76,16 +64,10 @@ export class ApplicationEntity extends CommonEntity {
     @JoinColumn({ name: 'branch_id' })
     branch: BranchEntity;
 
-    @OneToMany(
-        () => ApplicationChoiceEntity,
-        (application_chioces) => application_chioces.application
-    )
+    @OneToMany(() => ApplicationChoiceEntity, (application_chioces) => application_chioces.application)
     application_choices: ApplicationChoiceEntity[];
 
-    @OneToMany(
-        () => ApplicationPaymentEntity,
-        (application_payments) => application_payments.application
-    )
+    @OneToMany(() => ApplicationPaymentEntity, (application_payments) => application_payments.application)
     application_payments: ApplicationPaymentEntity[];
 
     @ManyToMany(() => PaymentRequestEntity)

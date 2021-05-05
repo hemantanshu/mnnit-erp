@@ -50,9 +50,7 @@ async function bootstrap() {
         });
     });
 
-    app.useGlobalPipes(
-        new ValidationPipe({ whitelist: true, transform: true })
-    );
+    app.useGlobalPipes(new ValidationPipe({ whitelist: true, transform: true }));
 
     // starting the server on the defined port
     const port = config.get('server').port;

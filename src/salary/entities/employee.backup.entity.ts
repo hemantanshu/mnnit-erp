@@ -1,7 +1,4 @@
-import {
-    CommonEntity,
-    LookupValueEntity,
-} from '@servicelabsco/nestjs-utility-services';
+import { CommonEntity, LookupValueEntity } from '@servicelabsco/nestjs-utility-services';
 import { Column, Entity, JoinColumn, ManyToOne } from 'typeorm';
 import { EmployeeEntity } from '../../utility/entities/employee.entity';
 import { EmployeeBankAccountEntity } from './employee.bank.account.entity';

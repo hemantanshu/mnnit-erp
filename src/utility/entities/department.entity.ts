@@ -21,10 +21,7 @@ export class DepartmentEntity extends CommonEntity {
     identifier: string;
 
     /** all related methods to go below this */
-    @OneToMany(
-        () => ProgramDepartmentEntity,
-        (program_departments) => program_departments.department
-    )
+    @OneToMany(() => ProgramDepartmentEntity, (program_departments) => program_departments.department)
     program_departments: ProgramDepartmentEntity[];
 
     @ManyToMany(() => ProgramEntity)

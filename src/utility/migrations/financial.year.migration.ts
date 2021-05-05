@@ -31,10 +31,7 @@ export class FinancialYearMigration {
 
         const data = plainToClassFromExist(entity, obj);
 
-        data.end_datetime = DateUtil.getFutureDateTime(
-            24 * 60 - 1,
-            data.end_datetime
-        );
+        data.end_datetime = DateUtil.getFutureDateTime(24 * 60 - 1, data.end_datetime);
         await data.save();
 
         global.console.log(`processed record ${record.id}`);

@@ -14,9 +14,6 @@ export class BranchEntity extends CommonEntity {
     name: string;
 
     /** all related methods to go below this */
-    @OneToMany(
-        () => ProgramDepartmentBranchEntity,
-        (program_departments) => program_departments.branch
-    )
+    @OneToMany(() => ProgramDepartmentBranchEntity, (program_departments) => program_departments.branch)
     program_departments: ProgramDepartmentBranchEntity[];
 }
